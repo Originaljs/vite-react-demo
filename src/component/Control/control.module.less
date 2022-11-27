@@ -1,0 +1,26 @@
+#control {
+    display: relative;
+    overflow: hidden;
+    height: calc(100% - 117px);
+    width: 100%;
+    background: url("../../assets/imgs/L 拷贝.png") no-repeat 516px 106px,
+        url("../../assets/imgs/R.png") no-repeat 1309px 106px;
+
+    .topButtonList {
+        display: flex;
+        justify-content: center;
+        gap: 0 55px;
+
+        .topbutton {
+
+            &:hover {
+                opacity: 0.8;
+                cursor: pointer;
+            }
+
+            &:active {
+                opacity: 1;
+            }
+        }
+    }
+}
