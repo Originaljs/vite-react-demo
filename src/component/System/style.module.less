@@ -3,26 +3,26 @@
     // height: calc(100% -117px);
     position: relative;
     display: flex;
-    flex-direction: row;
-    gap: 0 60px;
+    justify-content: center;
+    gap: 0 50px;
 
+    .cardTitle {
+        font-size: 14px;
+        color: #FFF;
+        height: 40px;
+        width: 401px;
+        text-align: center;
+        line-height: 40px;
+        background: url("../../assets/imgs/标题框(1).png");
+    }
     .systemLeft {
         display: flex;
         flex-direction: column;
         gap: 50px 0;
         position: absolute;
-        top: 128px;
+        top: 100px;
         left: 29px;
 
-        .cardTitle {
-            font-size: 14px;
-            color: #FFF;
-            height: 40px;
-            width: 401px;
-            text-align: center;
-            line-height: 40px;
-            background: url("../../assets/imgs/标题框(1).png");
-        }
 
         .cardContent {
             margin-top: 30px;
@@ -48,18 +48,64 @@
                 text-align: center;
                 font-size: 23px;
                 color: #FFF;
-                
+
 
             }
         }
 
+        .weatherInfoList {
+            display: grid;
+            justify-content: space-around;
+            grid-template-columns: repeat(2, max-content);
+            grid-template-rows: repeat(3, 84px);
+            gap: 1px 0;
+
+            .WeatherItem {
+                display: flex;
+                flex-direction: row;
+                gap: 0 11px;
+                font-size: 14px;
+                color: #FFF;
+
+                .textBox {
+                    display: flex;
+                    flex-direction: row;
+
+                    .Weathervalue {
+                        font-size: 20px;
+                    }
+
+                    .Weatherunit {
+                        align-self: flex-end;
+                        color: rgba(255, 255, 255, .6);
+                    }
+                }
+
+            }
+        }
+
+
+
+    }
+
+    .systemRight {
+        position: absolute;
+        top: 0;
+        right: 29px;
+        .errorInfos{
+            width: 401px;
+            height: 620px;
+            text-align: center;
+            background: url("../../assets/imgs/组 75.png");
+        }
     }
 
     .systemMiddle {
         width: 40%;
-        height: 90%;
+        height: 85%;
         position: relative;
         top: 5%;
+        border: 1px solid blue;
 
         .tcanvas {
             width: 100%;
