@@ -1,0 +1,70 @@
+#system {
+    width: 100%;
+    // height: calc(100% -117px);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 0 60px;
+
+    .systemLeft {
+        display: flex;
+        flex-direction: column;
+        gap: 50px 0;
+        position: absolute;
+        top: 128px;
+        left: 29px;
+
+        .cardTitle {
+            font-size: 14px;
+            color: #FFF;
+            height: 40px;
+            width: 401px;
+            text-align: center;
+            line-height: 40px;
+            background: url("../../assets/imgs/标题框(1).png");
+        }
+
+        .cardContent {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 0 28px;
+
+            .infoItemName {
+                text-align: center;
+                color: #FFF;
+                font-size: 14px;
+                width: 103px;
+                height: 28px;
+                line-height: 28px;
+
+
+            }
+
+            .infoItemValBox {
+                margin-top: 28px;
+                width: 101px;
+                height: 71px;
+                text-align: center;
+                font-size: 23px;
+                color: #FFF;
+                
+
+            }
+        }
+
+    }
+
+    .systemMiddle {
+        width: 40%;
+        height: 90%;
+        position: relative;
+        top: 5%;
+
+        .tcanvas {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}

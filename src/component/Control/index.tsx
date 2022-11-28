@@ -37,7 +37,7 @@ const btnList2 = [
 ]
 export const Control = () => {
     return (
-        <div id={Style.control}>
+        <div id={Style.control} className='page'>
             <div className={Style.topButtonList}>
                 <div className={Style.topbutton}><img src={fw} alt="" /></div>
                 <div className={Style.topbutton}><img src={qd} alt="" /></div>
