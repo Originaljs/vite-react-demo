@@ -12,6 +12,7 @@
         gap: 0 55px;
 
         .topbutton {
+            margin-top: 20px;
 
             &:hover {
                 opacity: 0.8;
@@ -20,6 +21,145 @@
 
             &:active {
                 opacity: 1;
+            }
+        }
+    }
+
+    .container {
+        margin: 0 50px;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 190px 190px;
+
+        .buttonListLeft,
+        .buttonListRight {
+            display: flex;
+            flex-direction: column;
+            gap: 2.1vh 0;
+
+            .SwitchBtn {
+                cursor: pointer;
+                font-size: 22px;
+                text-align: center;
+                width: 190px;
+                height: 54px;
+                color: #999999;
+                line-height: 54px;
+                border: none;
+
+            }
+        }
+
+    }
+
+    .footer {
+        position: absolute;
+        align-items: center;
+        width: 100%;
+        bottom: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px 0;
+        pointer-events: none;
+
+        .footerControlList {
+            display: flex;
+            gap: 0 110px;
+            color: rgba(255, 255, 255, 1);
+
+            .footerControlItem {
+                position: relative;
+                width: 168px;
+                height: 168px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: auto;
+
+                .footerControlItemCenterControl {
+                    position: relative;
+                    left: 0;
+                    top: 0;
+                    width: 106px;
+                    height: 106px;
+                    text-align: center;
+                    line-height: 106px;
+                    user-select: none;
+                    background: url(../../assets/imgs/圈.png);
+
+                    &>span {
+                        pointer-events: none;
+                    }
+                }
+
+                .footerControlItemTopControl,
+                .footerControlItemRightControl,
+                .footerControlItemBottomControl,
+                .footerControlItemLeftControl {
+                    position: absolute;
+                    cursor: pointer;
+                    width: 67px;
+                    height: 27px;
+                    opacity: 0.8;
+                    background: url(../../assets/imgs/上.png);
+                }
+
+                .footerControlItemTopControl :hover,
+                .footerControlItemRightControl :hover,
+                .footerControlItemBottomControl:hover,
+                .footerControlItemLeftControl:hover {
+                    opacity: 1;
+                    filter: saturate(150%);
+                }
+
+                .footerControlItemTopControl {
+                    top: 0;
+                }
+
+                .footerControlItemBottomControl {
+                    bottom: 0;
+                    transform: rotate(180deg);
+                }
+
+                .footerControlItemLeftControl {
+                    left: -20px;
+                    transform: rotate(-90deg);
+                }
+
+                .footerControlItemRightControl {
+                    right: -20px;
+                    transform: rotate(90deg);
+                }
+
+            }
+
+        }
+
+        .footerDataInfoList {
+            display: flex;
+            gap: 0 40px;
+            color: #FFF;
+
+            .footerDataInfoItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px 0;
+
+                .footerDataInfoDesc {
+                    width: 231px;
+                    height: 40px;
+                    text-align: center;
+                    line-height: 40px;
+                    background: url('../../assets/imgs/标题框(3).png');
+                }
+
+                .footerDataInfoMsg {
+                    width: 145px;
+                    height: 87px;
+                    text-align: center;
+                    background: url(../../assets/imgs/底座.png) no-repeat;
+                }
             }
         }
     }

@@ -10,6 +10,45 @@
             display: grid;
             grid-template-columns: repeat(2, 171px) 1fr repeat(2, 171px);
             grid-template-rows: 78px;
+
+            .item {
+                height: 68px;
+                background: url("../../assets/imgs/圆角矩形 618 拷贝.png") no-repeat;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+
+                &>span {
+                    color: #3086E8;
+                    font-size: 25px;
+                }
+
+                &:nth-child(2) {
+                    align-self: flex-end;
+                }
+
+                &:nth-child(3) {
+                    grid-column: 4;
+                    align-self: flex-end;
+                }
+
+                &:nth-child(4) {
+                    grid-column: 5;
+                }
+
+                &:nth-child(n - 3) {
+                    transform: rotate(3deg)
+                }
+
+                &:nth-child(n + 3) {
+                    transform: rotate(-3deg)
+                }
+
+                &:active{
+                    background: url("@/assets/imgs/圆角矩形 618 拷贝 (1).png") no-repeat; 
+                }
+            }
         }
 
     }
