@@ -11,6 +11,59 @@
         width: 320px;
         height: 90%;
         align-items: center;
+
+        .infoCard {
+            width: 100%;
+
+            .topImgBox {
+                width: 231px;
+                height: 68px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto;
+                margin-top: 56px;
+                background: url(../../assets/imgs/2.png) no-repeat center bottom;
+            }
+
+            .infoCardDetailTable {
+
+                margin-top: 29px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                gap: 7px 0;
+                font-size: 14px;
+                align-items: center;
+
+                .tableRow {
+                    width: 90%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    // gap: 0 50px;
+
+                    .infoCardDetailName {
+                        display: flex;
+                        // flex-direction: row;
+                        gap: 0 5px;
+                        color: #fff;
+                        height: 22px;
+
+                        .infoCardDetailNameText {
+                            flex: 1;
+                            text-align: justify;
+                        }
+                    }
+
+                    .infoCardDetailVal {
+                        text-align: right;
+                        color: rgba(43, 204, 255, 1);
+                    }
+                }
+
+            }
+        }
     }
 }
 
