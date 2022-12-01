@@ -98,8 +98,22 @@
 
     .main {
         width: 100%;
-        position: relative;
+        position: absolute;
         top: 23px;
+        text-align: center;
+        pointer-events: none;
+
+        .graphBoard {
+            box-sizing: border-box;
+            display: inline-block;
+            width: 916px;
+            height: 850px;
+            border: 5px solid #FFF;
+            overflow: hidden;
+            background: rgba(11, 50, 84, 1);
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+        }
     }
 
     .rightContent {
@@ -164,7 +178,8 @@
                 line-height: 40px;
                 background: url("../../assets/imgs/标题框(1)(1).png") no-repeat;
             }
-            .cardAngle{
+
+            .cardAngle {
                 width: 217px;
                 height: 84px;
                 font-size: 12px;

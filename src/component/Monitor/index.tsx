@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Option, Select } from "../common/Select"
 import { Input } from "../common/Input"
+import GraphBoard from './GraphBoard'
 import Style from "./style.module.less"
 import jt from '../../assets/imgs/NoStoppingArea.png'
 import vx from '../../assets/imgs/DangerZone.png'
@@ -75,7 +76,9 @@ export const Monitor = () => {
                     <div className={Style.graphParamsItem}></div>
                 </div>
             </div>
-            <div className={Style.main}></div>
+            <div className={Style.main}>
+                <GraphBoard />
+            </div>
             <div className={Style.rightContent}>
                 <div className={Style.angleInfoWrap}>
                     <div className={Style.angleInfoBox}>
