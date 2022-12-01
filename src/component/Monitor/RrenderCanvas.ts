@@ -1,3 +1,4 @@
+type vec2 = [number, number]
 
 export class RenderCanvas {
     initSetting = {
@@ -9,6 +10,34 @@ export class RenderCanvas {
     width: number
     height: number
     ctx: CanvasRenderingContext2D
+    LOCK_POINTER: boolean = false
+    lineList: Array<vec2> = [[0, 0]]
+    private _pointerX: number = 0
+    private _pointerY: number = 0
+
+    get pointerX() {
+        return this._pointerX
+    }
+
+    set pointerX(value: number) {
+        this._pointerX = value
+    }
+
+    get pointerY() {
+        return this._pointerY
+    }
+
+    set pointerY(value: number) {
+        this._pointerY = value
+    }
+
+    static LINEAR(start: number, now: number, time: number, value: number) {
+        return (now - start) / time * value
+    }
+
+    static EASE_IN(start: number, now: number, time: number, value: number) {
+        return Math.pow((now - start) / time, 2) * value
+    }
 
     constructor(dom: HTMLCanvasElement, center: any = {}) {
         this.width = dom.width
@@ -23,6 +52,8 @@ export class RenderCanvas {
         this.ctx.clearRect(0, 0, this.width, this.height)
         this.drawBackground()
         this.drawAxis()
+        this.drawLine(this.lineList)
+        this.drawPointer()
     }
 
     drawBackground(): void {
@@ -114,6 +145,72 @@ export class RenderCanvas {
         this.ctx.restore()
         this.ctx.restore()
         // this.setCenter()
+
+    }
+
+    drawLine(pointers: Array<vec2>) {
+        this.ctx.save()
+        this.setCenter(this.initSetting.center.x, this.initSetting.center.y)
+        this.ctx.strokeStyle = 'RGBA(255, 199, 61, .8)'
+        this.ctx.lineWidth = 10
+        this.ctx.lineJoin = "round"
+        this.ctx.lineCap = "round"
+        this.ctx.beginPath()
+        this.ctx.moveTo(pointers[0][0], pointers[0][1])
+        for (let i = 1; i < pointers.length; i++) {
+            const pointer = pointers[i]
+            this.ctx.lineTo(pointer[0] * this.initSetting.pixelRatio, pointer[1] * this.initSetting.pixelRatio)
+        }
+        this.ctx.stroke()
+        this.ctx.restore()
+    }
+
+    drawPointer() {
+        this.ctx.save()
+        const radius = 40
+        this.setCenter(this.initSetting.center.x, this.initSetting.center.y)
+        const gradient = this.ctx.createLinearGradient((this.pointerX - radius) * this.initSetting.pixelRatio, (this.pointerY - radius) * this.initSetting.pixelRatio,
+            (this.pointerX + radius) * this.initSetting.pixelRatio, (this.pointerY + radius) * this.initSetting.pixelRatio)
+        gradient.addColorStop(0, "rgba(255, 110, 141, 1)");
+        gradient.addColorStop(1, "rgba(252, 39, 39, 1)")
+        this.ctx.fillStyle = gradient
+        this.ctx.beginPath()
+        this.ctx.arc(this.pointerX * this.initSetting.pixelRatio, this.pointerY * this.initSetting.pixelRatio, radius, 0, Math.PI * 2, false)
+        this.ctx.closePath()
+        this.ctx.fill()
+        this.ctx.restore()
+
+    }
+
+    animationPointerTo(x: number, y: number, time: number, linearFn = RenderCanvas.LINEAR) {
+        if (this.LOCK_POINTER) return
+        this.LOCK_POINTER = true
+        const start = Date.now()
+        const easeFn = linearFn
+        const endTime = start + time
+        const distanceX = x - this.pointerX
+        const distanceY = y - this.pointerY
+        const startX = this.pointerX
+        const startY = this.pointerY
+        this.lineList.push([startX, startY])
+        return new Promise((resolve: Function) => {
+            let animation = () => {
+                const now = Date.now()
+                if (now > endTime) {
+                    this.pointerX = x
+                    this.pointerY = y
+                    this.LOCK_POINTER = false
+                    this.lineList[this.lineList.length - 1] = [x, y]
+                    resolve()
+                } else {
+                    this.pointerX = startX + easeFn(start, now, time, distanceX)
+                    this.pointerY = startY + easeFn(start, now, time, distanceY)
+                    this.lineList[this.lineList.length - 1] = [this.pointerX, this.pointerY]
+                    requestAnimationFrame(animation)
+                }
+            }
+            animation()
+        })
 
     }
 }

@@ -20,9 +20,13 @@ const GraphBoard = () => {
         }
         update();
 
-        (async function () {
-            const randomInt = (l: number, r: number) => Math.round(Math.random() * (r - l) + l)
-        })()
+        const randomInt = (l: number, r: number) => Math.round(Math.random() * (r - l) + l)
+            ; (async function () {
+
+                for (let i = 0; i < Number.MAX_SAFE_INTEGER; i++) {
+                    await container.animationPointerTo(randomInt(-450, 450), randomInt(-450, 450), randomInt(20, 40), [RenderCanvas.LINEAR, RenderCanvas.EASE_IN][randomInt(0, 1)])
+                }
+            })()
     })
     return (
         <div className={Style.graphBoard}>
